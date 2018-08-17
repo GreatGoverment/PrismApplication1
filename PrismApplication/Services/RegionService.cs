@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using Prism.Regions;
 using Prism.Unity;
+using PrismApplication.ViewModels;
 
 namespace PrismApplication.Services
 {
@@ -27,9 +28,15 @@ namespace PrismApplication.Services
             RegionManager.RequestNavigate("Header", viewName, parameters);
         }
 
-        public void MainNavigate(string viewName)
+        public void BackNavigate(string viewName)
         {
             RegionManager.RequestNavigate("Main", viewName);
+        }
+
+        public void MainNavigate(string fromViewName, string toViewName)
+        {
+            BaseViewModel.viewStacker.Push(fromViewName);
+            RegionManager.RequestNavigate("Main", toViewName);
         }
 
         public void MainNavigate(string viewName, NavigationParameters parameters)

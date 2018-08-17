@@ -7,11 +7,13 @@ using Prism.Mvvm;
 using Prism.Regions;
 using Microsoft.Practices.Unity;
 using PrismApplication.Services;
+using Prism.Commands;
 
 namespace PrismApplication.ViewModels
 {
     public class BaseViewModel : BindableBase, INavigationAware
     {
+        public static Stack<string> viewStacker = new Stack<string>();
 
         [Dependency]
         public RegionService RegionService { get; set; }
@@ -29,6 +31,15 @@ namespace PrismApplication.ViewModels
         bool INavigationAware.IsNavigationTarget(NavigationContext navigationContext)
         {
             return false;
+        }
+
+
+        public DelegateCommand BackCommand =>
+            new DelegateCommand(DoBack, () => true);
+
+        private void DoBack()
+        {
+            RegionService.BackNavigate(viewStacker.Pop());
         }
     }
 }

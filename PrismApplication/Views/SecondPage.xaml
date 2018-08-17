@@ -45,7 +45,12 @@
         <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4"
                Background="BlanchedAlmond"/>
         <Button Grid.Column="0" Grid.Row="0" Content="Confirmation" Command="{Binding ConfirmationCommand}"/>
-        <Button Grid.Column="1" Grid.Row="0" Content="Button2"/>
+        <Button Grid.Column="1" Grid.Row="0" Content="Access DB" Command="{Binding AccessDBCommand}"/>
+        <Button Grid.Column="2" Grid.Row="0" Content="Entity Framework" Command="{Binding FrameworkDBCommand}"/>
+        <Button Grid.Column="3" Grid.Row="0" Content="Ping" Command="{Binding PingCommand}"/>
+        <Button Grid.Column="0" Grid.Row="1" Content="Next Page" Command="{Binding NextPageCommand}"/>
+        
+        
         <Button  Grid.Column="3" Grid.Row="3" Padding="0.5" Margin="5" 
                 Command="{Binding BackCommand}"
                 HorizontalAlignment="Center"

@@ -35,7 +35,7 @@ namespace PrismApplication.ViewModels
         private void DoSubmit()
         {
             RegionService.HeaderNavigate(nameof(HeaderControl), "SecondPage");
-            RegionService.MainNavigate(nameof(SecondPage));
+            RegionService.MainNavigate(nameof(MainPage), nameof(SecondPage));
         }
 
         private bool CanSubmit()
