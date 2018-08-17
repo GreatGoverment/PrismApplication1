@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="PrismApplication.Views.ConfirmationDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PrismApplication.Views"
+             mc:Ignorable="d" 
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             d:DesignHeight="500" d:DesignWidth="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="3"
+               Content="{Binding LabelSentense, Mode=TwoWay}"/>
+        <Button Grid.Column="0" Grid.Row="3" Margin="20" Background="Coral"
+                Command="{Binding OkCommand}" Content="Yes" IsDefault="True"/>
+        <Button Grid.Column="1" Grid.Row="3" Margin="20" Background="LightSeaGreen"
+                Content="No" IsCancel="True"/>
+    </Grid>
+</UserControl>
