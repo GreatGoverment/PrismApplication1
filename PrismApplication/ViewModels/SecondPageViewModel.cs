@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using CoreTweet;
+using Prism.Commands;
 using Prism.Interactivity.InteractionRequest;
 using PrismApplication.Entity;
 using PrismApplication.Repository;
@@ -106,17 +107,16 @@ namespace PrismApplication.ViewModels
             RegionService.HeaderNavigate(nameof(HeaderControl), "KPT");
             RegionService.MainNavigate(nameof(SecondPage), nameof(KeepProblemTry));
         }
-        
-        /*
-        public DelegateCommand BackCommand =>
-            new DelegateCommand(DoBack, () => true);
 
-        private void DoBack()
+        public DelegateCommand TwitterCommand =>
+            new DelegateCommand(DoTwitter, () => true);
+
+        private void DoTwitter()
         {
-            RegionService.HeaderNavigate(nameof(HeaderControl), "FirstPage");
-            RegionService.MainNavigate(nameof(MainPage));
+            var s = OAuth.Authorize("consumer_key", "consumer_secret");
+            RegionService.MainNavigate(nameof(SecondPage), nameof(KeepProblemTry));
         }
-        */
+
 
     }
 }

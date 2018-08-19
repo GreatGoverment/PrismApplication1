@@ -6,6 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PrismApplication.Views"
              xmlns:prism="http://prismlibrary.com/"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" >
     <i:Interaction.Triggers>
@@ -49,8 +50,14 @@
         <Button Grid.Column="2" Grid.Row="0" Content="Entity Framework" Command="{Binding FrameworkDBCommand}"/>
         <Button Grid.Column="3" Grid.Row="0" Content="Ping" Command="{Binding PingCommand}"/>
         <Button Grid.Column="0" Grid.Row="1" Content="Next Page" Command="{Binding NextPageCommand}"/>
-        
-        
+        <Button Grid.Column="1" Grid.Row="1" Command="{Binding TwitterCommand}">
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Twitter" HorizontalAlignment="Left"/>
+                <TextBlock Text="Twitter" HorizontalAlignment="Left"/>
+            </StackPanel>
+        </Button>
+
+
         <Button  Grid.Column="3" Grid.Row="3" Padding="0.5" Margin="5" 
                 Command="{Binding BackCommand}"
                 HorizontalAlignment="Center"
