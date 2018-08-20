@@ -13,7 +13,8 @@ namespace PrismApplication.ViewModels
 {
     public class BaseViewModel : BindableBase, INavigationAware
     {
-        public static Stack<string> viewStacker = new Stack<string>();
+        public static Stack<string> viewStack = new Stack<string>();
+        
 
         [Dependency]
         public RegionService RegionService { get; set; }
@@ -33,13 +34,19 @@ namespace PrismApplication.ViewModels
             return false;
         }
 
-
+        
         public DelegateCommand BackCommand =>
-            new DelegateCommand(DoBack, () => true);
+            new DelegateCommand(DoBack, CanBack);
+            //.ObservesProperty(() => viewStack);
 
         private void DoBack()
         {
-            RegionService.BackNavigate(viewStacker.Pop());
+            if (viewStack.Any())
+            {
+                RegionService.BackNavigate(viewStack.Pop());
+            }
         }
+        //private bool CanBack() => viewStack.Any();
+        private bool CanBack() => true;
     }
 }

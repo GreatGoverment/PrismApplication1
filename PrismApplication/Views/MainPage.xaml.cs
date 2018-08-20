@@ -30,5 +30,11 @@ namespace PrismApplication.Views
             if (this.DataContext != null)
                 ((dynamic)this.DataContext).Password = ((PasswordBox)sender).Password;
         }
+
+        private void RunInternetLink(object sender, SelectionChangedEventArgs e)
+        {
+            System.Console.WriteLine(InternetLinkListBox.SelectedItem);
+            //System.Diagnostics.Process.Start("https://www.yahoo.co.jp/");
+        }
     }
 }

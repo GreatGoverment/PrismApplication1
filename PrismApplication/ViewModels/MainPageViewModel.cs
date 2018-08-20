@@ -5,6 +5,7 @@ using Prism.Regions;
 using PrismApplication.Views;
 using PrismApplication.Services;
 using System.Windows;
+using System.Collections.Generic;
 
 namespace PrismApplication.ViewModels
 {
@@ -27,6 +28,21 @@ namespace PrismApplication.ViewModels
             set { SetProperty(ref _password, value); }
         }
 
+        private List<string> linkItems;
+        public List<string> LinkItems
+        {
+            get { return linkItems; }
+            set { SetProperty(ref linkItems, value); }
+        }
+
+
+        public MainPageViewModel()
+        {
+            LinkItems = new List<string>
+            {
+                "Yhaoo! JAPAN", "Goog1e", "Operation Operation"
+            };
+        }
 
 
         public DelegateCommand SubmitCommand =>

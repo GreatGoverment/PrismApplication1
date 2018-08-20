@@ -35,7 +35,7 @@ namespace PrismApplication.Services
 
         public void MainNavigate(string fromViewName, string toViewName)
         {
-            BaseViewModel.viewStacker.Push(fromViewName);
+            BaseViewModel.viewStack.Push(fromViewName);
             RegionManager.RequestNavigate("Main", toViewName);
         }
 

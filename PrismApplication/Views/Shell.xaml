@@ -3,77 +3,32 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PrismApplication.Views"        
+        xmlns:local="clr-namespace:PrismApplication.Views"
+        xmlns:CustomControl="clr-namespace:CustomControl.Views;assembly=CustomControl"
         xmlns:prism="http://prismlibrary.com/"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Shell" WindowState="Maximized">
     <materialDesign:DrawerHost BorderBrush="Black">
-        <materialDesign:DrawerHost.LeftDrawerContent>
-            <StackPanel Margin="10,5">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Battery90" />
-                    <TextBlock Text="{Binding BatteryLife, Mode=TwoWay}"/>
-                </StackPanel>
-                <Button Style="{DynamicResource MaterialDesignFlatButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Twitter" HorizontalAlignment="Left"/>
-                        <TextBlock Text="Twitter" HorizontalAlignment="Left" FontSize="20"/>
-                    </StackPanel>
-                </Button>
-                <Button Style="{DynamicResource MaterialDesignFlatButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Twitter" HorizontalAlignment="Left"/>
-                        <TextBlock Text="Twitter" HorizontalAlignment="Left" FontSize="20"/>
-                    </StackPanel>
-                </Button>
-                <Button Style="{DynamicResource MaterialDesignFlatButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Twitter" HorizontalAlignment="Left"/>
-                        <TextBlock Text="Twitter" HorizontalAlignment="Left" FontSize="20"/>
-                    </StackPanel>
-                </Button>
-                <Button Style="{DynamicResource MaterialDesignFlatButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Twitter" HorizontalAlignment="Left"/>
-                        <TextBlock Text="Twitter" HorizontalAlignment="Left" FontSize="20"/>
-                    </StackPanel>
-                </Button>
-                <Button Style="{DynamicResource MaterialDesignFlatButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Twitter" HorizontalAlignment="Left"/>
-                        <TextBlock Text="Twitter" HorizontalAlignment="Left" FontSize="20"/>
-                    </StackPanel>
-                </Button>
-                <Button Style="{DynamicResource MaterialDesignFlatButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Twitter" HorizontalAlignment="Left"/>
-                        <TextBlock Text="Twitter" HorizontalAlignment="Left" FontSize="20"/>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
-        </materialDesign:DrawerHost.LeftDrawerContent>
+        <materialDesign:DrawerHost.RightDrawerContent>
+            <CustomControl:DrawerHostItem/>
+        </materialDesign:DrawerHost.RightDrawerContent>
 
         <DockPanel>
 
-            <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+            <materialDesign:ColorZone Padding="10" materialDesign:ShadowAssist.ShadowDepth="Depth2"
                                             Mode="PrimaryMid"  DockPanel.Dock="Top">
                 <DockPanel>
-                    <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}"
+                    <ToggleButton x:Name="MenuToggleButton" Style="{StaticResource MaterialDesignHamburgerToggleButton}"
                                   Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
-                                  CommandParameter="{x:Static Dock.Left}"
-                                  IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}"/>
-                    <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
-                        <!--
-                        <StackPanel>
-                            <Button Content="Hello World" Click="MenuPopupButton_OnClick"/>
-                            <Button Content="Nice Popup" Click="MenuPopupButton_OnClick"/>
-                            <Button Content="Can't Touch This" IsEnabled="False" />
-                            <Separator/>
-                            <Button Content="Goodbye" Click="MenuPopupButton_OnClick"/>
-                        </StackPanel>
-                        -->
-                    </materialDesign:PopupBox>
+                                  CommandParameter="{x:Static Dock.Right}"
+                                  DockPanel.Dock="Right"/>
+                    <Button Command="{Binding BackCommand}" Padding="0"
+                            IsEnabled="{Binding BackCommandEnable, Mode=TwoWay}">
+                        <Viewbox Stretch="Uniform">
+                            <materialDesign:PackIcon Kind="ArrowLeftBold"/>
+                        </Viewbox>
+                    </Button>
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">Prism Application</TextBlock>
                 </DockPanel>
             </materialDesign:ColorZone>
@@ -82,33 +37,6 @@
                 <ContentControl Grid.Row="0" prism:RegionManager.RegionName="Main"/>
             </Grid>
         </DockPanel>
-
-
-        <!--
-        <DockPanel>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                                            Mode="PrimaryMid"  DockPanel.Dock="Top">
-                <DockPanel>
-                    <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
-                      DockPanel.Dock="Top" HorizontalAlignment="Right"
-                      Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
-                      CommandParameter="{x:Static Dock.Left}"
-                      IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
-                               FontSize="22">Welcome to MaterialDesign</TextBlock>
-                </DockPanel>
-            </materialDesign:ColorZone>
-
-            <ContentControl Grid.Row="0" prism:RegionManager.RegionName="Header"/>
-            <ContentControl Grid.Row="1" prism:RegionManager.RegionName="Main"/>
-        </Grid>
-        </DockPanel>
-        -->
     </materialDesign:DrawerHost>
     
 </Window>
