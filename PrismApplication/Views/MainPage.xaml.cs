@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrismApplication.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,8 +34,15 @@ namespace PrismApplication.Views
 
         private void RunInternetLink(object sender, SelectionChangedEventArgs e)
         {
-            System.Console.WriteLine(InternetLinkListBox.SelectedItem);
-            //System.Diagnostics.Process.Start("https://www.yahoo.co.jp/");
+            HyperLinkItem item = InternetLinkListBox.SelectedItem as HyperLinkItem;
+            System.Diagnostics.Process.Start(item.LinkURL);
+        }
+
+        private void DialogHost_DialogClosing(object sender, MaterialDesignThemes.Wpf.DialogClosingEventArgs eventArgs)
+        {
+            if (!Equals(eventArgs.Parameter, true)) return;
+
+            System.Console.WriteLine("Title : " + TitleTextBox.Text + ", URL : " + URLTextBox.Text);
         }
     }
 }

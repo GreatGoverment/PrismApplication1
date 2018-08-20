@@ -6,6 +6,7 @@ using PrismApplication.Views;
 using PrismApplication.Services;
 using System.Windows;
 using System.Collections.Generic;
+using PrismApplication.Entity;
 
 namespace PrismApplication.ViewModels
 {
@@ -28,8 +29,8 @@ namespace PrismApplication.ViewModels
             set { SetProperty(ref _password, value); }
         }
 
-        private List<string> linkItems;
-        public List<string> LinkItems
+        private List<HyperLinkItem> linkItems;
+        public List<HyperLinkItem> LinkItems
         {
             get { return linkItems; }
             set { SetProperty(ref linkItems, value); }
@@ -38,9 +39,11 @@ namespace PrismApplication.ViewModels
 
         public MainPageViewModel()
         {
-            LinkItems = new List<string>
+            LinkItems = new List<HyperLinkItem>
             {
-                "Yhaoo! JAPAN", "Goog1e", "Operation Operation"
+                new HyperLinkItem{Title = "Yahoo! Japan", LinkURL="https://www.yahoo.co.jp/"},
+                new HyperLinkItem{Title = "Google", LinkURL="https://www.google.co.jp/"},
+                new HyperLinkItem{Title = "Material Design In XAML", LinkURL="https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit"}
             };
         }
 

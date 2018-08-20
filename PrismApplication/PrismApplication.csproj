@@ -119,6 +119,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Entity\HyperLinkItem.cs" />
     <Compile Include="Entity\MyDbContext.cs" />
     <Compile Include="Entity\Setting.cs" />
     <Compile Include="Repository\BaseRepository.cs" />

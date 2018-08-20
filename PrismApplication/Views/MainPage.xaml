@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:PrismApplication.ViewModels"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" >
     <Grid>
@@ -47,6 +48,65 @@
             </Grid>
         </GroupBox>
 
+
+        <materialDesign:DialogHost Grid.Column="1" Margin="16" DialogClosing="DialogHost_DialogClosing">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Margin="16">
+                    <StackPanel.Resources>
+                        <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
+                            <Setter Property="Margin" Value="0,8,0,0"/>
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                        </Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+                            <Setter Property="Margin" Value="0,8,8,0"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <TextBlock Text="Title"/>
+                    <TextBox materialDesign:HintAssist.Hint="Enter Web Site Name" x:Name="TitleTextBox" />
+                    <TextBlock Text="URL"/>
+                    <TextBox materialDesign:HintAssist.Hint="Enter Web Site URL" x:Name="URLTextBox" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                        <Button Content="ADD" IsDefault="True" Command="materialDesign:DialogHost.CloseDialogCommand">
+                            <Button.CommandParameter>
+                                <system:Boolean>True</system:Boolean>
+                            </Button.CommandParameter>
+                        </Button>
+                        <Button Content="CANCEL" IsCancel="True" Command="materialDesign:DialogHost.CloseDialogCommand">
+                            <Button.CommandParameter>
+                                <system:Boolean>False</system:Boolean>
+                            </Button.CommandParameter>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+
+            <GroupBox Header="Card Group Box">
+                <GroupBox.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="InternetExplorer" Height="32" Width="32" VerticalAlignment="Center" />
+                            <TextBlock Margin="8,0,0,0" VerticalAlignment="Center" 
+                                   Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Link List" />
+                        </StackPanel>
+                    </DataTemplate>
+                </GroupBox.HeaderTemplate>
+                <Grid>
+                    <ListBox x:Name="InternetLinkListBox" ItemsSource="{Binding LinkItems}" DisplayMemberPath="Title" VerticalAlignment="Top" SelectionChanged="RunInternetLink"/>
+                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                        VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,-20">
+                        <Viewbox Width="22" Height="22">
+                            <Canvas Width="24" Height="24">
+                                <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
+                                  Fill="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Button}, Path=Foreground}" />
+                            </Canvas>
+                        </Viewbox>
+                    </Button>
+
+                </Grid>
+            </GroupBox>
+        </materialDesign:DialogHost>
+        
+        <!--
         <GroupBox Header="Card Group Box" Grid.Column="1" Margin="16">
             <GroupBox.HeaderTemplate>
                 <DataTemplate>
@@ -57,7 +117,20 @@
                     </StackPanel>
                 </DataTemplate>
             </GroupBox.HeaderTemplate>
-            <ListBox x:Name="InternetLinkListBox" ItemsSource="{Binding LinkItems}" VerticalAlignment="Top" SelectionChanged="RunInternetLink"/>
+            <Grid>
+                <ListBox x:Name="InternetLinkListBox" ItemsSource="{Binding LinkItems}" DisplayMemberPath="Title" VerticalAlignment="Top" SelectionChanged="RunInternetLink"/>
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                        VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,-20">
+                    <Viewbox Width="22" Height="22">
+                        <Canvas Width="24" Height="24">
+                            <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
+                                  Fill="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Button}, Path=Foreground}" />
+                        </Canvas>
+                    </Viewbox>
+                </Button>
+
+            </Grid>
         </GroupBox>
+        -->
     </Grid>
 </UserControl>
