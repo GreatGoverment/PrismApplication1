@@ -15,5 +15,7 @@ namespace PrismApplication.Entity
         }
 
         public DbSet<Setting> Settings { get; set; }
+        public DbSet<InternetLink> InternetLinks { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

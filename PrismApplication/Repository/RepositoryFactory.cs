@@ -11,14 +11,18 @@ namespace PrismApplication.Repository
     {
         MyDbContext context = new MyDbContext();
 
+        public static RepositoryFactory instance = new RepositoryFactory();
 
-
-        public RepositoryFactory()
+        private RepositoryFactory()
         {
             SettingRepository = new SettingRepository(context);
+            InternetLinkRepository = new InternetLinkRepository(context);
+            UserRepository = new UserRepository(context);
         }
 
         public SettingRepository SettingRepository { get; }
+        public InternetLinkRepository InternetLinkRepository { get; }
+        public UserRepository UserRepository { get; }
     }
 
 }

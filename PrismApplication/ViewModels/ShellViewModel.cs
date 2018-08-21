@@ -1,4 +1,6 @@
-﻿using Prism.Regions;
+﻿using Prism.Commands;
+using Prism.Interactivity.InteractionRequest;
+using Prism.Regions;
 using PrismApplication.Views;
 using System;
 using System.Collections.Generic;
@@ -11,12 +13,22 @@ namespace PrismApplication.ViewModels
 {
     public class ShellViewModel : BaseViewModel, INavigationAware
     {
+        public InteractionRequest<Notification> AddUserDialogRequest { get; } = new InteractionRequest<Notification>();
+
         private float batteryLife = SystemInformation.PowerStatus.BatteryLifePercent * 100;
         public float BatteryLife
         {
             get { return batteryLife; }
             set { SetProperty(ref batteryLife, value); }
         }
+
+        public DelegateCommand AddUserCommand => new DelegateCommand(DoAddUser, () => true);
+        private void DoAddUser()
+        {
+
+            AddUserDialogRequest.Raise(new Notification() { Title = "testtest"});
+        }
+
 
         public ShellViewModel(IRegionManager rm)
         {

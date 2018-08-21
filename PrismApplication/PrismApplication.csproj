@@ -119,19 +119,28 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Common\SafePassword.cs" />
     <Compile Include="Entity\HyperLinkItem.cs" />
+    <Compile Include="Entity\InternetLink.cs" />
     <Compile Include="Entity\MyDbContext.cs" />
     <Compile Include="Entity\Setting.cs" />
+    <Compile Include="Entity\User.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
+    <Compile Include="Repository\InternetLinkRepository.cs" />
     <Compile Include="Repository\RepositoryFactory.cs" />
     <Compile Include="Repository\SettingRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Services\RegionService.cs" />
+    <Compile Include="ViewModels\AddUserDialogViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ConfirmationDialogViewModel.cs" />
     <Compile Include="ViewModels\HeaderControlViewModel.cs" />
     <Compile Include="ViewModels\KeepProblemTryViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\SecondPageViewModel.cs" />
+    <Compile Include="Views\AddUserDialog.xaml.cs">
+      <DependentUpon>AddUserDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ConfirmationDialog.xaml.cs">
       <DependentUpon>ConfirmationDialog.xaml</DependentUpon>
     </Compile>
@@ -155,6 +164,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AddUserDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ConfirmationDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -34,15 +34,8 @@ namespace PrismApplication.Views
 
         private void RunInternetLink(object sender, SelectionChangedEventArgs e)
         {
-            HyperLinkItem item = InternetLinkListBox.SelectedItem as HyperLinkItem;
-            System.Diagnostics.Process.Start(item.LinkURL);
-        }
-
-        private void DialogHost_DialogClosing(object sender, MaterialDesignThemes.Wpf.DialogClosingEventArgs eventArgs)
-        {
-            if (!Equals(eventArgs.Parameter, true)) return;
-
-            System.Console.WriteLine("Title : " + TitleTextBox.Text + ", URL : " + URLTextBox.Text);
+            InternetLink item = InternetLinkListBox.SelectedItem as InternetLink;
+            System.Diagnostics.Process.Start(item.SiteURL);
         }
     }
 }

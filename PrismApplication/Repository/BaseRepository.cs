@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PrismApplication.Repository
 {
-    public class BaseRepository<T> where T : class
+    public abstract class BaseRepository<T> where T : class
     {
         protected readonly MyDbContext context;
         protected DbSet<T> dbSet;
@@ -18,10 +18,18 @@ namespace PrismApplication.Repository
             this.context = context;
             this.dbSet = dbSet;
         }
+        
+        public virtual T FindOne(Func<T, bool> predicate)
+        {
+            return dbSet.Where<T>(predicate).SingleOrDefault<T>();
+        }
 
         public virtual List<T> FindAll()
         {
             return dbSet.ToList();
         }
+
+
+        abstract public void Insert(T t);
     }
 }

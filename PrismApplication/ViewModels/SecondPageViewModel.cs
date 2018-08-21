@@ -73,8 +73,7 @@ namespace PrismApplication.ViewModels
         {
             using (var context = new MyDbContext())
             {
-                RepositoryFactory rf = new RepositoryFactory();
-                List<PrismApplication.Entity.Setting> settings = rf.SettingRepository.FindAll();
+                List<PrismApplication.Entity.Setting> settings = RepositoryFactory.instance.SettingRepository.FindAll();
                 System.Windows.MessageBox.Show("key=" + settings[0].Key + "\nvalue=" + settings[0].Value);
             }
         }

@@ -13,6 +13,10 @@ namespace PrismApplication.Repository
         {
 
         }
-        
+
+        public override void Insert(Setting t)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
