@@ -117,5 +117,10 @@ namespace PrismApplication.ViewModels
         }
 
 
+        public DelegateCommand ParallelPageCommand =>
+            new DelegateCommand
+            (() => RegionService.MainNavigate(nameof(SecondPage), nameof(ParallelTestPage)),
+             () => true);
+
     }
 }

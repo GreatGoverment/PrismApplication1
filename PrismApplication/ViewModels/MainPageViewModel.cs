@@ -4,11 +4,13 @@ using Prism.Regions;
 using PrismApplication.Views;
 using PrismApplication.Services;
 using Prism.Commands;
+using Prism.Interactivity.InteractionRequest;
 using System.Windows;
 using System.Collections.Generic;
 using PrismApplication.Common;
 using PrismApplication.Entity;
 using PrismApplication.Repository;
+using PrismApplication.Request;
 using System.ComponentModel;
 
 namespace PrismApplication.ViewModels
@@ -17,6 +19,7 @@ namespace PrismApplication.ViewModels
     {
         [Dependency]
         public IRegionManager RegionManager { get; set; }
+        public InteractionRequest<MessageNotification> MessageDialogRequest { get; } = new InteractionRequest<MessageNotification>();
 
         #region Property
 
@@ -82,8 +85,15 @@ namespace PrismApplication.ViewModels
             User loginUser 
                 = RepositoryFactory.instance.UserRepository.FindOne(Id, SafePassword.GetStretchedPassword(Id, Password));
             if (loginUser is null)
-            {
-                System.Console.WriteLine("Login Failed");
+            {   
+                MessageDialogRequest.Raise(
+                    new MessageNotification()
+                    {
+                        Title = "ERROR",
+                        IconKind= "AlertDecagram",
+                        Message="Login Failed!!!!!",
+                        ButtonContent="OK"
+                    });
             }
             else
             {
