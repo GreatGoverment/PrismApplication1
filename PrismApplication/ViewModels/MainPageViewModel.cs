@@ -70,7 +70,7 @@ namespace PrismApplication.ViewModels
 
         public MainPageViewModel()
         {
-            LinkItems = new BindingList<InternetLink>(RepositoryFactory.instance.InternetLinkRepository.FindAll());
+            //LinkItems = new BindingList<InternetLink>(RepositoryFactory.instance.InternetLinkRepository.FindAll());
         }
 
 
@@ -81,9 +81,18 @@ namespace PrismApplication.ViewModels
 
         private void DoSubmit()
         {
+            User loginUser;
+            try
+            {
+                loginUser
+                    = RepositoryFactory.instance.UserRepository.FindOne(Id, SafePassword.GetStretchedPassword(Id, Password));
+            }
+            catch
+            {
+                loginUser = new User();
+            }
 
-            User loginUser 
-                = RepositoryFactory.instance.UserRepository.FindOne(Id, SafePassword.GetStretchedPassword(Id, Password));
+
             if (loginUser is null)
             {   
                 MessageDialogRequest.Raise(

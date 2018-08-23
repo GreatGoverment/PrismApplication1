@@ -139,6 +139,7 @@
     <Compile Include="ViewModels\KeepProblemTryViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\MessageDialogViewModel.cs" />
+    <Compile Include="ViewModels\ParallelTestPageViewModel.cs" />
     <Compile Include="ViewModels\SecondPageViewModel.cs" />
     <Compile Include="Views\AddUserDialog.xaml.cs">
       <DependentUpon>AddUserDialog.xaml</DependentUpon>

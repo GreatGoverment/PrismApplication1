@@ -8,7 +8,16 @@
              xmlns:prism="http://prismlibrary.com/"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              prism:ViewModelLocator.AutoWireViewModel="True">
-    <Grid>
-
-    </Grid>
+    <StackPanel Orientation="Vertical">
+        <materialDesign:PackIcon Kind="Lock" Width="200" Height="200" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
+        <TextBlock Text="{Binding ProgressStatus, Mode=TwoWay}"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Margin="20" Width="100" Content="No Parallel" Command="{Binding NoParallelCommand}"/>
+            <Button Grid.Column="1" Margin="20" Width="100" Content="Parallel" Command="{Binding ParallelCommand}"/>
+        </Grid>
+    </StackPanel>
 </UserControl>
